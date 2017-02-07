@@ -21,7 +21,12 @@ angular.module('starter.controllers', [])
   $scope.chat = Chats.get($stateParams.chatId);
 })
 
-.controller('AccountCtrl', function($scope) {
+.controller('WordCtrl', function($scope, WordFetcher){
+  $scope.wordsList = WordFetcher.getWords();
+  $scope.word = WordFetcher.getWord();
+})
+
+.controller('AccountCtrl', function($scope, $ionicModal) {
   $scope.settings = {
     enableFriends: true
   };
@@ -33,4 +38,10 @@ angular.module('starter.controllers', [])
       { id: 5, title: 'Titre 5'},
       { id: 6, title: 'Titre 6'}
    ];
+   $ionicModal.fromTemplateUrl('templates/login.html', {
+        scope: $scope,
+        animation: 'slide-in-up'
+     }).then(function(modal) {
+         $scope.loginModal = modal;
+     });
 });

@@ -1,5 +1,25 @@
 angular.module('starter.services', [])
 
+.factory('WordFetcher', function(){
+  var mdj = "";
+  var words = [];
+
+  return {
+    getWords: function(){
+      return $http.get('http://192.168.1.78/android/getWord.php').then(function(response){
+        words = response;
+        return words;
+      });
+    },
+    getWord: function(){
+      return $http.get('http://192.168.1.78/android/getWords.php').then(function(response){
+        mdj = response;
+        return mdj;
+      });;
+    }
+  };
+})
+
 .factory('Chats', function() {
   // Might use a resource here that returns a JSON array
 
