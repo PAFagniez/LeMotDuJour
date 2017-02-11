@@ -27,19 +27,19 @@ angular.module('starter.controllers', [])
   $scope.word = [];
 
   WordFetcher.getWords().then(function(data){
-    $scope.words = data;
+    $scope.words = data.data;
     console.log('LA REPONSE D !', $scope.words);
-
+    return $scope.words;
   });
 
-  var beber = WordFetcher.getWord().then(function(data){
+  WordFetcher.getWord().then(function(data){
     $scope.word = data.data[0];
     console.log('WORD EST !', data); 
     console.log('RESPONSE : ', $scope.word);
-    return $scope.word.$$state;
+    return $scope.word;
   });
 
-  $scope.toto = beber;
+  //$scope.toto = beber;
 
     console.log('OVER THE LINE : ', $scope.toto);
   

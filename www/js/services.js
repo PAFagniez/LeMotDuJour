@@ -18,10 +18,8 @@ angular.module('starter.services', [])
     return {
 
     getWords: function(){
-      console.log('WORDS Service', words);
-      return $q.when(promise).then(function(){
-        return words;
-      });
+      
+      return $http.get('http://192.168.1.78/android/getWords.php');
       // .then(function(response){
       //   words = response.data;
       //   console.log(words);
