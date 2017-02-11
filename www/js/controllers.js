@@ -28,33 +28,14 @@ angular.module('starter.controllers', [])
 
   WordFetcher.getWords().then(function(data){
     $scope.words = data.data;
-    console.log('LA REPONSE D !', $scope.words);
     return $scope.words;
   });
 
   WordFetcher.getWord().then(function(data){
     $scope.word = data.data[0];
-    console.log('WORD EST !', data); 
-    console.log('RESPONSE : ', $scope.word);
     return $scope.word;
   });
 
-  //$scope.toto = beber;
-
-    console.log('OVER THE LINE : ', $scope.toto);
-  
-  // $http.get('http://192.168.1.78/android/getWord.php').then(function(response){
-    //$scope.word = response
-    // console.log('it works !', $scope.word.data[0].name);
-  // });
-
-  
-  //$scope.wordId = WordFetcher.getUserById();
-  $scope.list = [
-      { id: 1, name: 'Pétrichor', definition: 'Odeur de la pluie'},
-      { id: 1, name: 'Baboulinet', definition: 'aaz'},
-      { id: 3, name: 'Ro', definition: 'fth'}
-   ];
 })
 
 .controller('AccountCtrl', function($scope, $ionicModal) {
