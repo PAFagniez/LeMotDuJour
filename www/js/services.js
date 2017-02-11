@@ -1,21 +1,49 @@
 angular.module('starter.services', [])
 
-.factory('WordFetcher', function(){
-  var mdj = "";
-  var words = [];
+.factory('WordFetcher', function($http, $q){
 
-  return {
+      var mdj;
+      var words = [];
+      var promise = $http.get('http://192.168.1.78/android/getWords.php').then(function successCallback(response) {
+        // Set message and send data to the view
+        console.log(response.data);
+        words = response.data.words; // <- Here I have an array of Objects (each object is a customer)
+        return words;
+    }, function errorCallback(err) {
+        // Set error message
+        console.log('Erreur', err);
+        return err;
+    });
+
+    return {
+
     getWords: function(){
-      return $http.get('http://192.168.1.78/android/getWord.php').then(function(response){
-        words = response;
+      console.log('WORDS Service', words);
+      return $q.when(promise).then(function(){
         return words;
       });
+      // .then(function(response){
+      //   words = response.data;
+      //   console.log(words);
+      //   return words;
+
+      // });
+    },
+    getUserById: function(id){
+      for(i=0;i<words.length;i++){
+        if(words[i].id == id){
+          return words[i];
+        }
+      }
+      return null;
     },
     getWord: function(){
-      return $http.get('http://192.168.1.78/android/getWords.php').then(function(response){
-        mdj = response;
-        return mdj;
-      });;
+      return $http.get('http://192.168.1.78/android/getWord.php');
+      // .then(function(response){
+      //   mdj = response.data[0];
+      //   console.log('qsd',  mdj.motDuJour);
+      //   return mdj;
+      // });
     }
   };
 })

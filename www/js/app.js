@@ -59,6 +59,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         }
       }
     })
+  
     .state('tab.chat-detail', {
       url: '/chats/:chatId',
       views: {
@@ -69,11 +70,12 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       }
     })
 
-  .state('tab.mytab', {
-      url: '/mytab',
+  .state('tab.word', {
+      url: '/word',
       views: {
-        'tab-mytab': {
-          templateUrl: 'templates/tab-mytab.html'
+        'tab-word': {
+          templateUrl: 'templates/tab-word.html',
+          controller: 'WordCtrl'
         }
       }
     })
