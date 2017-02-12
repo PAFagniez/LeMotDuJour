@@ -1,11 +1,13 @@
 <ion-view view-title="List">
-  <ion-content>
+  <ion-content class="board-background">
     <ion-list>
     <h2 class="padding">Liste des mots</h2>
       <ion-item ng-repeat="word in words">
-        {{word.id}} : {{word.name}} ({{word.type}}) <br/>
-        Definition : {{word.definition}} <br/>
-        Exemple : {{word.example}}
+        <div class="wordList">
+        	{{word.id}} : {{word.name}} ({{word.type}}) <br/>
+        	Definition : {{word.definition}} <br/>
+        	Exemple : {{word.example}}
+        </div>
       </ion-item>
     </ion-list>
   </ion-content>
