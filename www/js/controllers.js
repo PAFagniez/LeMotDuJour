@@ -1,8 +1,5 @@
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl', function($scope) {
-})
-
 .controller('ChatsCtrl', function($scope, Chats) {
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
@@ -18,11 +15,7 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
-  $scope.chat = Chats.get($stateParams.chatId);
-})
-
-.controller('WordCtrl', function($scope, WordFetcher, $http){
+.controller('ListCtrl', function($scope, WordFetcher, $http){
   $scope.words = [];
   $scope.word = [];
 
@@ -38,22 +31,13 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('AccountCtrl', function($scope, $ionicModal) {
-  $scope.settings = {
-    enableFriends: true
-  };
-  $scope.list = [
-      { id: 1, title: 'Titre 1'},
-      { id: 2, title: 'Titre 2'},
-      { id: 3, title: 'Titre 3'},
-      { id: 4, title: 'Titre 4'},
-      { id: 5, title: 'Titre 5'},
-      { id: 6, title: 'Titre 6'}
-   ];
-   $ionicModal.fromTemplateUrl('templates/login.html', {
-        scope: $scope,
-        animation: 'slide-in-up'
-     }).then(function(modal) {
-         $scope.loginModal = modal;
-     });
+.controller('WordCtrl', function($scope, WordFetcher, $http){
+
+  $scope.word = [];
+
+  WordFetcher.getWord().then(function(data){
+    $scope.word = data.data[0];
+    return $scope.word;
+  });
+
 });
