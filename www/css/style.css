@@ -8,13 +8,14 @@ ion-content{
 }
 
 h2{
-	color: white;
+	color: white !important;
 }
 
 .word{
-	color: white;
+	color: white !important;
 }
 
-.wordList{
+.item{
+	color : white;
 	background: transparent;
 }

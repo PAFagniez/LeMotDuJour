@@ -2,13 +2,14 @@ angular.module('starter.services', [])
 
 .factory('WordFetcher', function($http, $q){
 
-    var mdj;
-    var words = [];
+    var mdj,
+    words = [],
+    host = "https://burmese-disease.000webhostapp.com/";
 
     return {
 
     getWords: function(){
-      return $http.get('http://192.168.1.78/android/getWords.php');
+      return $http.get(host + 'getWords.php');
     },
 
     getUserById: function(id){
@@ -21,7 +22,7 @@ angular.module('starter.services', [])
     },
 
     getWord: function(){
-      return $http.get('http://192.168.1.78/android/getWord.php');
+      return $http.get(host +'getWord.php');
     }
   };
 });
